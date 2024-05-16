@@ -51,3 +51,10 @@ message(STATUS "file GLOB - 指定路径，返回多种指定文件: ${SUB_CPP_F
 
 file(GLOB RELATIVE_CPP_FILES RELATIVE E:/huangjx/solution/CMakeLearn/Build *.cpp)
 message(STATUS "file GLOB - 指定相对路径，返回相对路径: ${RELATIVE_CPP_FILES}")
+
+#
+file(GLOB_RECURSE RECURSE_H_FILES *.h)
+message(STATUS "file GLOB_RECURSE - 返回所有文件: ${RECURSE_H_FILES}")
+
+file(GLOB_RECURSE RECURSE_RELATIVE_H_FILES RELATIVE E:/huangjx/solution/CMakeLearn/Build *.h)
+message(STATUS "file GLOB_RECURSE - 返回所有文件: ${RECURSE_RELATIVE_H_FILES}")
