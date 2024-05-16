@@ -10,3 +10,6 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 Build
+file/globtest
+file/globtest2
+file/test*.*
