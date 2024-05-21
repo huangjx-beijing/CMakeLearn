@@ -33,6 +33,28 @@ message(STATUS "${FILE_SHA256}")
 message(STATUS "${FILE_SHA384}")
 message(STATUS "${FILE_SHA512}")
 
+# TIMESTAMP
+file(TIMESTAMP test.txt TEST_TIMESTAMP)
+message(STATUS "file TIMESTAMP -       ${TEST_TIMESTAMP}")
+
+file(TIMESTAMP test.txt TEST_UTC_TIMESTAMP UTC)
+message(STATUS "file TIMESTAMP - UTC : ${TEST_UTC_TIMESTAMP}")
+
+file(TIMESTAMP test.txt TEST_UTC_TIMESTAMP_Y "%Y/%m/%d %H:%M:%S")
+message(STATUS "file TIMESTAMP - %Y:   ${TEST_UTC_TIMESTAMP_Y}")
+
+file(TIMESTAMP test.txt TEST_UTC_TIMESTAMP_y "%y/%m/%d %I:%M:%S")
+message(STATUS "file TIMESTAMP - %y:   ${TEST_UTC_TIMESTAMP_y}")
+
+file(TIMESTAMP test.txt TEST_UTC_TIMESTAMP_U "%U")
+message(STATUS "file TIMESTAMP - 一年当中的第${TEST_UTC_TIMESTAMP_U}周")
+
+file(TIMESTAMP test.txt TEST_UTC_TIMESTAMP_w "%w")
+message(STATUS "file TIMESTAMP - 星期${TEST_UTC_TIMESTAMP_w}")
+
+file(TIMESTAMP test.txt TEST_UTC_TIMESTAMP_j "%j")
+message(STATUS "file TIMESTAMP - 一年当中的第${TEST_UTC_TIMESTAMP_j}天")
+
 # GLOB 当前cmakelists.txt路径
 file(GLOB EMPTY_FILES)
 message(STATUS "file GLOB - 不指定任何globbing表达式，返回为空: ${EMPTY_FILES}")
