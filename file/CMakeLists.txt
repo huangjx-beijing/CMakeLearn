@@ -80,3 +80,32 @@ message(STATUS "file GLOB_RECURSE - 返回所有文件: ${RECURSE_H_FILES}")
 
 file(GLOB_RECURSE RECURSE_RELATIVE_H_FILES RELATIVE E:/huangjx/solution/CMakeLearn/Build *.h)
 message(STATUS "file GLOB_RECURSE - 返回所有文件: ${RECURSE_RELATIVE_H_FILES}")
+
+file(MAKE_DIRECTORY maketest maketest2/makesub)
+file(RELATIVE_PATH RELATAVE_PATH_HH E:/huangjx/solution/CMakeLearn/file/maketest E:/huangjx/solution/CMakeLearn/file/maketest2)
+message(STATUS "${RELATAVE_PATH_HH}")
+
+# TO_NATIVE_PATH TO_CMAKE_PATH
+set(PATH_1 "D:\\\\\\\\ ////test")
+set(PATH_2 "D:////////\\\\test")
+
+message(STATUS "********************path->native********************")
+file(TO_NATIVE_PATH "${PATH_1}" NATIVE_PATH_1)
+message(STATUS "${PATH_1} -> NATIVE_PATH: ${NATIVE_PATH_1}")
+file(TO_NATIVE_PATH "${PATH_2}" NATIVE_PATH_2)
+message(STATUS "${PATH_2} -> NATIVE_PATH: ${NATIVE_PATH_2}")
+
+message(STATUS "********************path->cmake********************")
+file(TO_CMAKE_PATH "${PATH_1}" NATIVE_CMAKE_PATH_1)
+message(STATUS "${PATH_1} -> CMAKE_PATH: ${NATIVE_CMAKE_PATH_1}")
+file(TO_CMAKE_PATH "${PATH_2}" NATIVE_CMAKE_PATH_2)
+message(STATUS "${PATH_2} -> CMAKE_PATH: ${NATIVE_CMAKE_PATH_2}")
+
+message(STATUS "********************path->native->cmake********************")
+file(TO_CMAKE_PATH "${NATIVE_PATH_1}" CMAKE_PATH_1)
+message(STATUS "${PATH_1} -> CMAKE_PATH: ${CMAKE_PATH_1}")
+file(TO_CMAKE_PATH ${NATIVE_PATH_2} CMAKE_PATH_2)
+message(STATUS "${PATH_2} -> CMAKE_PATH: ${CMAKE_PATH_2}")
+
+file(TO_CMAKE_PATH "$ENV{PATH}" CMAKE_PATH_3)
+message(STATUS "$ENV{PATH} -> CMAKE_PATH: ${CMAKE_PATH_3}")
