@@ -18,7 +18,7 @@ if(WIN32)
         VERBATIM
         SOURCES custom.txt)
 elseif(UNIX)
-    add_custom_target(dir COMMAND dir /W WORKING_DIRECTORY "/home" VERBATIM)
+    add_custom_target(dir COMMAND dir WORKING_DIRECTORY "/" VERBATIM)
 
     add_custom_target(ping
         ALL
