@@ -4,18 +4,16 @@ message(STATUS "${CMAKE_VERSION}")
 
 project(installTest)
 
-add_executable(HelloShell main.cpp)
+add_definitions(-DBUILD_HELLOWORLD_LIB)
 
-add_library(HelloLib SHARED lib.cpp lib.h)
+if(WIN32)
+    add_definitions(-DHELLOWORLD_WIN)
+endif()
 
-target_link_libraries(HelloShell HelloLib)
+if(BUILD_SHARED_LIBS)
+    add_definitions(-DBUILD_SHARED)
+endif()
 
-set(CMAKE_INSTALL_PREFIX install/install)
+add_subdirectory(HelloWorld)
 
-# 3.0
-install(CODE "message(STATUS \"********************开始安装********************\")")
-install(TARGETS HelloShell HelloLib
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib/static)
-install(CODE "message(STATUS \"********************安装结束********************\")")
+add_subdirectory(MyExe)
