@@ -14,3 +14,4 @@ file/globtest
 file/globtest2
 file/test*.*
 install/install
+.vscode
